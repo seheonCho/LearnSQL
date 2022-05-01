@@ -7,6 +7,7 @@
    1. `https://www.mysqltutorial.org/mysql-sample-database.aspx/` 링크 접속
    2. `scott.md` 데이터를 복사하여  SQL 클라이언트이자 데이터베이스 관리 도구에서 실행하여, 테이블 데이터를 만든다. (DBeaver 등)
 2. 이 Repository 를 `fork` 한다.
+   1. `fork` 방법은 다음의 링크 참조 `https://github.com/next-step/nextstep-docs/tree/master/playground`
 3. 다음의 양식으로 `Pull Request` 작성한다.
    1. `X월 X일 문제 풀이`
 4. 통과하면 merge 된다.

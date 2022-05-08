@@ -1,0 +1,35 @@
+1.
+SELECT a.ENAME,a.HIREDATE,b.ENAME as MANAGER,b.HIREDATE,
+		DATE_ADD(a.HIREDATE,INTERVAL 1 YEAR) as '고용일로부터 1년이 지난 날' 
+  FROM emp as a, emp as b 
+ WHERE a.MGR = b.EMPNO 
+   AND a.HIREDATE<b.HIREDATE;
+
+2.
+SELECT CONCAT(a.ENAME,'의 매니저는 ', b.ENAME, '이다.') as '직원별 매니저 이름' 
+  FROM emp as a, emp as b 
+ WHERE a.MGR = b.EMPNO;
+
+3.
+SELECT JOB,RANK() OVER(PARTITION BY JOB ORDER BY SAL DESC) as '순위',EMPNO,ENAME 
+  FROM emp 
+ ORDER BY JOB ASC;
+
+4.
+SELECT a.EMPNO,a.ENAME,a.HIREDATE 
+  FROM emp as a, emp as b 
+ WHERE a.HIREDATE > b.HIREDATE 
+   AND b.ENAME = 'MILLER';
+
+5.
+SELECT * 
+  FROM emp 
+ WHERE SAL < (SELECT AVG(SAL) 
+ 				FROM emp,salgrade 
+ 			   WHERE GRADE = '2' 
+ 			     AND SAL BETWEEN LOSAL AND HISAL);
+
+6.
+SELECT JOB,RANK() OVER(ORDER BY AVG(SAL) DESC) as 'RANKING' 
+  FROM emp 
+ GROUP BY JOB;

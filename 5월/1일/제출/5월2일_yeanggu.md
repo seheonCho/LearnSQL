@@ -1,0 +1,29 @@
+1.
+SELECT SUM(SAL)*12 
+  FROM emp,dept 
+ WHERE emp.DEPTNO=dept.DEPTNO 
+   AND DNAME = 'SALES';
+
+2.
+SELECT b.ENAME 
+  FROM emp as a, emp as b 
+ WHERE a.MGR = b.EMPNO 
+   AND a.ENAME 
+  LIKE '%S%';
+
+3.
+SELECT RANK() OVER(ORDER BY SAL DESC),SAL 
+  FROM emp 
+ WHERE ENAME 
+  LIKE '%N';
+
+4.
+SELECT SUM(length(ENAME)-length(REPLACE(ENAME,'A',''))) 
+    AS sumAlphaBet 
+  FROM emp;
+
+5.
+SELECT JOB,SUM(SAL)/COUNT(ENAME),
+		RANK() OVER(ORDER BY SUM(SAL)/COUNT(ENAME) DESC) 
+  FROM emp 
+ GROUP BY JOB;
